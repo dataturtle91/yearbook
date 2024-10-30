@@ -28,7 +28,8 @@ particular_soldiers_chart <- ggplot(df,aes(x = year)) +
   scale_x_continuous(breaks = c(2013,2014,2015,2016,2017,2018,2019,2020,2021,
                                 2022,2023)) +
   labs(
-    title = "Number and number of professional soldiers in Poland in 2013-2023 by position"
+    title = "Number of professional soldiers in Poland in 2013-2023 by position"
+    y=""
   )+
   scale_y_continuous(breaks = seq(0,60, by = 10)) +
   geom_line(aes(y = privates, color = "Privates")) +
