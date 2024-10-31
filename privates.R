@@ -1,17 +1,21 @@
+# This script shows how to calculate difference between number of
+# pricates year to year
+
+
 library(dplyr)
-library(ggplot2)
 
 army <- read.csv("army.csv", sep =";")
 
+# I. R-base version
 
+df_privates <- army[,c(1,6)]
+df_privates$change <- c(NA,diff(df_privates$privates))
 
-# Difference between number of
-# privates y/y
+# II. dplyr version
 
+privates_df <- army %>%
+  select(year,privates)
 
-
-# Base R approach
-
-privates <- army[,c(1,6)]
-privates$change <- c(NA, diff(privates$privates))
-privates
+privates_df <- privates_df %>% 
+  arrange(year) %>%
+  mutate(change = privates - lag(privates))
